@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dojo Message Board</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="./favicon.png"/>
+    </head>
+    <body>
+        <div id="header">
+            <h4>The Dojo Message Board</h4>
+            <hr>
+        </div>
+        <div id="content">
+            <form action="/post_message" method="POST">
+                
+                <h6>Name:</h6>
+                <input type="text" name="m_name">
+                <h6>Message:</h6>
+                <textarea id="msgText" name="m_text"></textarea>
+                <input id="msgBtn" type="submit" value="Post message">
+            </form>
+            <!-- Validation Error Ouput -->
+            <% if(messages.invalid_msg) { %>
+                <% for (var x of messages.invalid_msg) { %>
+                <h6 class="err"><%= x %></h6>
+                <% } %>
+            <% } %>
+            <% if(messages.invalid_cmnt) { %>
+                <% for (var x of messages.invalid_cmnt) { %>
+                <h6 class="err"><%= x %></h6>
+                <% } %>
+            <% } %>
+            <!-- Validation Error Ouput -->
+            <% for (var m in mssgs) { %>
+                <div class="msg">
+                    <h5>Name: <%= mssgs[m].m_name %></h5>
+                    <h5>Message: <%= mssgs[m].m_text %></h5>
+                </div>
+                <% for (var c = 0; c < mssgs[m].cmnts.length; c++) { %>
+                    <div class="cmnt">
+                        <h6>Name: <%= mssgs[m].cmnts[c].c_name %></h6>
+                        <h6>Comment: <%= mssgs[m].cmnts[c].c_text %></h6>
+                    </div>
+                <% } %>
+                <form class="cmntForm" action="/post_comment/<%= mssgs[m]._id %>" method="POST">
+                    <h6>Name:</h6>
+                    <input type="text" name="c_name">
+                    <h6>Comment:</h6>
+                    <textarea class="cmntText" name="c_text"></textarea>
+                    <input class="cmntBtn" type="submit" value="Post comment">
+                </form>
+            <% } %>
+        </div>
+    </body>
+</html>

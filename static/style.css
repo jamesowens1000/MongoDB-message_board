@@ -1,0 +1,46 @@
+body{
+    padding: 50px;
+    background-image: url('./bg.png');
+}
+h6{
+    margin-bottom: 5px;
+}
+input{
+    margin-bottom: 10px;
+}
+.err{
+    color: red;
+}
+#msgText{
+    height: 100px;
+    width: 95%;
+    resize: none;
+    margin-bottom: 10px;
+}
+#msgBtn{
+    background-color: blue;
+    color: ghostwhite;
+    border-radius: 10px;
+    margin-left: 86%;
+}
+.cmntForm{
+    margin-left: 5%;
+}
+.cmntText{
+    height: 100px;
+    width: 85%;
+    resize: none;
+    margin-bottom: 10px;
+}
+.cmntBtn{
+    background-color: green;
+    color: ghostwhite;
+    border-radius: 10px;
+    margin-left: 75%;
+}
+.msg{
+    margin: 25px 0 25px 35px;
+}
+.cmnt{
+    margin: 15px 0 15px 70px;
+}
